@@ -6,14 +6,34 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                        <img src="{{ url('img/favicom.png') }}" alt="" width="80%" style="margin-right: -60px">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Home') }}
+                    </x-jet-nav-link>
+
+                    <x-jet-nav-link href="/intranet/trabajador/fontaneria" :active="request()->routeIs('intranet.fontaneria')">
+                        {{ __('Fontaneria') }}
+                    </x-jet-nav-link>
+
+                    <x-jet-nav-link href="/intranet/trabajador/citas" :active="request()->routeIs('intranet.citas')">
+                        {{ __('Citas') }}
+                    </x-jet-nav-link>
+
+                    <x-jet-nav-link href="/intranet/trabajador/averias" :active="request()->routeIs('intranet.averias')">
+                        {{ __('Averias') }}
+                    </x-jet-nav-link>
+
+                    <x-jet-nav-link href="/intranet/trabajador/agenda" :active="request()->routeIs('intranet.agenda')">
+                        {{ __('Agenda') }}
+                    </x-jet-nav-link>
+
+                    <x-jet-nav-link href="/tienda/fontaneria" :active="request()->routeIs('tienda.fontaneria')">
+                        {{ __('Tienda') }}
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -74,11 +94,12 @@
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                                <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                                {{-- <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                                     <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
-                                </button>
+                                </button> --}}
+                                {{-- <p>{{ Auth::user()->profile_photo_url }}</p> --}}
                             @else
-                                <span class="inline-flex rounded-md">
+                                {{-- <span class="inline-flex rounded-md">
                                     <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
                                         {{ Auth::user()->name }}
 
@@ -86,7 +107,7 @@
                                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                         </svg>
                                     </button>
-                                </span>
+                                </span> --}}
                             @endif
                         </x-slot>
 
@@ -113,9 +134,9 @@
                                 @csrf
 
                                 <x-jet-dropdown-link href="{{ route('logout') }}"
-                                         onclick="event.preventDefault();
+                                    onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                    {{ __('Log Out') }}
+                                    {{ __('LogOut') }}
                                 </x-jet-dropdown-link>
                             </form>
                         </x-slot>
@@ -140,6 +161,22 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="/intranet/trabajador" :active="request()->routeIs('intranet.trabajador')">
+                {{ __('Trabajador') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="/intranet/trabajador/fontaneria" :active="request()->routeIs('intranet.fontaneria')">
+                {{ __('Fontaneria') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="/intranet/trabajador/agenda" :active="request()->routeIs('intranet.agenda')">
+                {{ __('Agenda') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="/tienda/fontaneria" :active="request()->routeIs('tienda.fontaneria')">
+                {{ __('Tienda') }}
             </x-jet-responsive-nav-link>
         </div>
 

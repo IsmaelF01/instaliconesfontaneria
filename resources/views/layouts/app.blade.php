@@ -14,9 +14,14 @@
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
         @livewireStyles
-
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+
+        <!-- FullCalendar -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.css">
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/locales-all.js"></script>
+
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -30,6 +35,15 @@
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-jet-dropdown-link href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();" style="width: 15%; float: right; margin-top: -130px; margin-right: 20px">
+                            <img style="float: right" class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" /> <p style="float: right; margin-right: 5px; margin-top: 5px"><b>Exit</b></p>
+                        </x-jet-dropdown-link>
+                    </form>
                 </header>
             @endif
 
@@ -42,5 +56,6 @@
         @stack('modals')
 
         @livewireScripts
+
     </body>
 </html>
