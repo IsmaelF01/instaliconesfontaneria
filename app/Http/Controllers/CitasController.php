@@ -25,6 +25,15 @@ class CitasController extends Controller
         return view("tienda.citas", ["citas" => $citas, "user" => $user, "fontaneria" => $fontaneria]);
     }
 
+    public function index_pedido(Request $request, $id)
+    {
+        $user = User::find(Auth::id());
+        $query = trim($request->get('search'));
+        $citas = Cita::where('estado', 'LIKE', '%'.$query.'%')->where('user_id', '=', Auth::id())->orderBy('id', 'asc')->paginate(5);
+        $fontaneria = Fontaneria::find($id);
+        return view("tienda.citas", ["citas" => $citas, "user" => $user, "fontaneria" => $fontaneria]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

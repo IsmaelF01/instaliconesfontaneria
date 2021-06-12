@@ -1,4 +1,11 @@
 <x-tienda-layout>
+    <script>
+        if( location.pathname != "/tienda/citas"){
+            window.onload = function(){
+                document.getElementById('myModal').showModal();
+            }
+        }
+    </script>
     <h3 class="mb-4 text-lg font-semibold text-gray-900" style="margin-left: 5%; float: left;">Citas</h3>
         <div class="m-3">
             <button style="position: absolute; top: 80px; right: 70px" onclick="document.getElementById('myModal').showModal()"
@@ -18,6 +25,17 @@
                                 alt="{{ Auth::user()->name }}" />
                         </div>
                     </div>
+                    @if (isset($fontaneria->nombre))
+                    <a href="/tienda/citas">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round"
+                                class="feather feather-x">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                    </a>
+                    @else
                     <div onclick="document.getElementById('myModal').close();"
                         class="flex w-1/12 h-auto justify-center cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -28,6 +46,7 @@
                             <line x1="6" y1="6" x2="18" y2="18"></line>
                         </svg>
                     </div>
+                    @endif
                     <!--Header End-->
                 </div>
                 <!-- Modal Content-->
@@ -47,10 +66,15 @@
                             <div class="grid grid-cols-1 mt-5 mx-7">
                                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Fontaneria</label>
                                 <select id="fontaneria" name="fontaneria"  class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+
+                                        @if (isset($fontaneria->nombre))
+                                            <option value="{{$fontaneria->id}}">{{$fontaneria->nombre}}</option>
+                                        @else
                                         <option value="default" disabled selected>Seleccione un Trabajo</option>
-                                    @foreach ($fontaneria as $fonta)
-                                        <option value="{{$fonta->id}}">{{$fonta->nombre}}</option>
-                                    @endforeach
+                                            @foreach ($fontaneria as $fonta)
+                                            <option value="{{$fonta->id}}">{{$fonta->nombre}}</option>
+                                            @endforeach
+                                        @endif
                                 </select>
                             </div>
 

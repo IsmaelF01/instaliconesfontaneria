@@ -199,83 +199,85 @@
                     </tbody>
                 </table>
                 {{ $fontaneria->Links() }}
-                <dialog id="update"="h-auto w-11/12 md:w-1/2 p-5  bg-white rounded-md ">
 
-                    <div class="flex flex-col w-full h-auto ">
-                        <!-- Header -->
-                        <div class="flex w-full h-auto justify-center items-center">
+                @if (isset($fontaneria))
+                    <dialog id="update"="h-auto w-11/12 md:w-1/2 p-5  bg-white rounded-md ">
+                        <div class="flex flex-col w-full h-auto ">
+                            <!-- Header -->
+                            <div class="flex w-full h-auto justify-center items-center">
+                                <div
+                                    class="flex w-10/12 h-auto py-3 justify-center items-center text-2xl font-bold">
+                                    <img src="/img/favicom.png" alt="" width="20%" style="margin-left: 50px">
+
+                                </div>
+                                <div onclick="document.getElementById('update').close();"
+                                    class="flex w-1/12 h-auto justify-center cursor-pointer">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="feather feather-x">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </div>
+                                <!--Header End-->
+                            </div>
+                            <!-- Modal Content-->
                             <div
-                                class="flex w-10/12 h-auto py-3 justify-center items-center text-2xl font-bold">
-                                <img src="/img/favicom.png" alt="" width="20%" style="margin-left: 50px">
+                                class="flex w-full h-auto py-10 px-2 justify-center items-center bg-gray-200 rounded text-center text-gray-500">
+                                <div class=" flex items-center justify-center">
 
+                                    <form action="/intranet/trabajador/fontaneria/{{$fonta->id}}/update" method="POST" id="form"
+                                        class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" enctype="multipart/form-data">
+                                        <h1 class="block text-gray-700 font-bold mb-2 text-xl text-center">
+                                            QUESTIONNAIRE TO UPDATE OF FONTANERIA</h1>
+                                        @csrf
+                                        <br>
+
+                                        <div class="mb-4">
+                                            <label class="block text-gray-700 text-sm font-bold mb-2"
+                                                for="name">
+                                                Descripcion
+                                            </label>
+                                            <textarea cols="10" rows="10" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            name="descripcion" id="descripcion" type="text"
+                                            placeholder="Cambia la descripcion" required></textarea>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="block text-gray-700 text-sm font-bold mb-2"
+                                                for="name">
+                                                Precio
+                                            </label>
+                                            <input
+                                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                                name="precio" id="precio" type="text"
+                                                placeholder="Cambia el precio" required>
+                                        </div>
+
+                                        <div class="flex items-right justify-between">
+                                            <button id="submit"
+                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                                type="submit">
+                                                Create <img src="/img/mas.svg" alt=""
+                                                    style="float: right; margin-left: 5px">
+                                            </button>
+                                        </div>
+
+                                        <div class="mb-4">
+
+
+                                    </form>
+
+                                </div>
+                                <script src="https://kit.fontawesome.com/1e268974cb.js" crossorigin="anonymous">
+                                </script>
+                                <script src="assets/js/helpers.js"></script>
                             </div>
-                            <div onclick="document.getElementById('update').close();"
-                                class="flex w-1/12 h-auto justify-center cursor-pointer">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"
-                                    class="feather feather-x">
-                                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                                </svg>
-                            </div>
-                            <!--Header End-->
+                            <!-- End of Modal Content-->
                         </div>
-                        <!-- Modal Content-->
-                        <div
-                            class="flex w-full h-auto py-10 px-2 justify-center items-center bg-gray-200 rounded text-center text-gray-500">
-                            <div class=" flex items-center justify-center">
-
-                                <form action="/intranet/trabajador/fontaneria/{{$fonta->id}}/update" method="POST" id="form"
-                                    class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" enctype="multipart/form-data">
-                                    <h1 class="block text-gray-700 font-bold mb-2 text-xl text-center">
-                                        QUESTIONNAIRE TO UPDATE OF FONTANERIA</h1>
-                                    @csrf
-                                    <br>
-
-                                    <div class="mb-4">
-                                        <label class="block text-gray-700 text-sm font-bold mb-2"
-                                            for="name">
-                                            Descripcion
-                                        </label>
-                                        <textarea cols="10" rows="10" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        name="descripcion" id="descripcion" type="text"
-                                        placeholder="Cambia la descripcion" required></textarea>
-                                    </div>
-
-                                    <div class="mb-4">
-                                        <label class="block text-gray-700 text-sm font-bold mb-2"
-                                            for="name">
-                                            Precio
-                                        </label>
-                                        <input
-                                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                            name="precio" id="precio" type="text"
-                                            placeholder="Cambia el precio" required>
-                                    </div>
-
-                                    <div class="flex items-right justify-between">
-                                        <button id="submit"
-                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                            type="submit">
-                                            Create <img src="/img/mas.svg" alt=""
-                                                style="float: right; margin-left: 5px">
-                                        </button>
-                                    </div>
-
-                                    <div class="mb-4">
-
-
-                                </form>
-
-                            </div>
-                            <script src="https://kit.fontawesome.com/1e268974cb.js" crossorigin="anonymous">
-                            </script>
-                            <script src="assets/js/helpers.js"></script>
-                        </div>
-                        <!-- End of Modal Content-->
-                    </div>
-                </dialog>
+                    </dialog>
+                @endif
             </div>
         </div>
     </div>

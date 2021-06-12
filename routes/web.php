@@ -95,6 +95,7 @@ Route::prefix('/tienda')->middleware('auth')->group(function () {
 
     /*Seccion Citas*/
     Route::get('/citas', [CitasController::class, 'index']);
+    Route::get('/citas/pedido/{id}', [CitasController::class, 'index_pedido']);
     Route::POST('/citas/store', [CitasController::class, 'store']);
     Route::get('/citas/{id}/delete', [CitasController::class, 'destroy']);
 
