@@ -200,7 +200,7 @@
                 </table>
                 {{ $fontaneria->Links() }}
 
-                @if (isset($fontaneria))
+
                     <dialog id="update"="h-auto w-11/12 md:w-1/2 p-5  bg-white rounded-md ">
                         <div class="flex flex-col w-full h-auto ">
                             <!-- Header -->
@@ -226,7 +226,7 @@
                             <div
                                 class="flex w-full h-auto py-10 px-2 justify-center items-center bg-gray-200 rounded text-center text-gray-500">
                                 <div class=" flex items-center justify-center">
-
+                                    @if (isset($fonta->id))
                                     <form action="/intranet/trabajador/fontaneria/{{$fonta->id}}/update" method="POST" id="form"
                                         class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" enctype="multipart/form-data">
                                         <h1 class="block text-gray-700 font-bold mb-2 text-xl text-center">
@@ -268,7 +268,7 @@
 
 
                                     </form>
-
+                                    @endif
                                 </div>
                                 <script src="https://kit.fontawesome.com/1e268974cb.js" crossorigin="anonymous">
                                 </script>
@@ -277,7 +277,7 @@
                             <!-- End of Modal Content-->
                         </div>
                     </dialog>
-                @endif
+
             </div>
         </div>
     </div>
