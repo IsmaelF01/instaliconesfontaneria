@@ -19,7 +19,7 @@ class ComentariosController extends Controller
     {
         $user = User::find(Auth::id());
         $query = trim($request->get('search'));
-        $comentarios = Comentario::where('user_id->name', 'LIKE', '%'.$query.'%')->orderBy('id', 'asc')->paginate(8);
+        $comentarios = Comentario::where('created_at', 'LIKE', '%'.$query.'%')->orderBy('id', 'desc')->paginate(8);
         return view("tienda.comentarios", ["comentarios" => $comentarios, "user" => $user]);
     }
 

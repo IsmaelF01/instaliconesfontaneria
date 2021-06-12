@@ -3,7 +3,7 @@
         <form action="/tienda/comentarios">
             @csrf
             <div class="relative text-gray-600" style="position: absolute; right: 380px;">
-                <input type="search" name="search" placeholder="Search: Nombre"
+                <input type="search" name="search" placeholder="Search: Fecha Hora"
                     class="bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none">
                 <button type="submit" class="absolute right-0 top-0 mt-3 mr-4">
                     <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
@@ -17,8 +17,6 @@
             </div>
         </form>
         <h3 class="mb-4 text-lg font-semibold text-gray-900">Comentarios</h3>
-
-
         <div style="margin-bottom: 35px">
             <form action="/tienda/comentarios/store"method="POST" id="form" enctype="multipart/form-data">
                 @csrf
@@ -29,6 +27,7 @@
                 </button>
             </form>
         </div>
+
 
         @foreach ($comentarios as $comentario)
         <div class="space-y-4" style="width: 94%; margin-bottom: 10px">
