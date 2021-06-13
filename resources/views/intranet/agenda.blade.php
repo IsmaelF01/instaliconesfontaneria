@@ -89,17 +89,25 @@
                 var año = info['date'].getFullYear();
                 var mes = info['date'].getMonth()+1;
                 var dia = info['date'].getDate();
-                if(mes == '10' || mes == '11' || mes == '12')
-                var fecha = año+'-'+mes+'-'+dia;
-                else
-                var fecha = año+'-0'+mes+'-'+dia;
+                if(dia == '1' || dia == '2' || dia == '3' || dia == '4' || dia == '5' || dia == '6' || dia == '7' || dia == '8' || dia == '9'){
+                    if(mes != '10' || mes != '11' || mes != '12'){
+                        var fecha = año+'-0'+mes+'-0'+dia;
+                    }else
+                        var fecha = año+'-'+mes+'-0'+dia;
+
+                }else
+                    if(mes != '10' || mes != '11' || mes != '12'){
+                            var fecha = año+'-0'+mes+'-'+dia;
+                        }else
+                            var fecha = año+'-'+mes+'-'+dia;
+
                 window.location.href = "http://localhost:8000/intranet/trabajador/agenda/"+fecha;
 
             }
-          });
-          calendar.render();
         });
-      </script>
+        calendar.render();
+        });
+    </script>
 
 
     <div class="py-12">
