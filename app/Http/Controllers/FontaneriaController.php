@@ -20,12 +20,8 @@ class FontaneriaController extends Controller
     {
         $user = User::find(Auth::id());
         $query = trim($request->get('search'));
-            if ($user->role->role == "admin") {
-                $fontaneria = Fontaneria::where('categoria', 'LIKE', '%'.$query.'%')->orderBy('id', 'asc')->paginate(5);
-            } else {
-                $fontaneria = Fontaneria::where('user_id', '=', Auth::id())->where('categoria', 'LIKE', '%'.$query.'%')->orderBy('id', 'asc')->paginate(5);
-            }
-            return view("intranet.fontaneria", ["fontaneria" => $fontaneria, "user" => $user]);
+        $fontaneria = Fontaneria::where('categoria', 'LIKE', '%'.$query.'%')->orderBy('id', 'asc')->paginate(5);
+        return view("intranet.fontaneria", ["fontaneria" => $fontaneria, "user" => $user]);
     }
 
     /**
@@ -97,8 +93,8 @@ class FontaneriaController extends Controller
     public function update(Request $request, $id)
     {
         DB::table('fontanerias')
-              ->where('id', $id)
-              ->update([
+            ->where('id', $id)
+            ->update([
                 'descripcion' => $request->descripcion,
                 'precio' => $request->precio,
                 ]);

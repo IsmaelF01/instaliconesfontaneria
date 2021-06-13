@@ -21,7 +21,7 @@ class LoginResponse implements LoginResponseContract
         if($user->role->role == 'trabajador'){
             return $request->wantsJson()
                     ? response()->json(['two_factor' => false])
-                    : redirect()->intended('intranet/trabajador');
+                    : redirect()->intended('intranet/trabajador/fontaneria');
         }
 
         return $request->wantsJson()

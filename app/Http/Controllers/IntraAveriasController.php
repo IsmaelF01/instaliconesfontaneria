@@ -20,11 +20,8 @@ class IntraAveriasController extends Controller
         if($request){
             $user = User::find(Auth::id());
             $query = trim($request->get('search'));
-            if ($user->role->role == "admin") {
-                $averias = Averia::where('estado', 'LIKE', '%'.$query.'%')->orderBy('id', 'asc')->paginate(5);
-            } else {
-                $averias = Averia::where('user_id', '=', Auth::id())->where('estado', 'LIKE', '%'.$query.'%')->orderBy('id', 'asc')->paginate(5);
-            }
+            $averias = Averia::where('estado', 'LIKE', '%'.$query.'%')->orderBy('id', 'asc')->paginate(5);
+
             return view("intranet.averias", ["averias" => $averias]);
         }
     }

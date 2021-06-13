@@ -20,11 +20,7 @@ class IntraCitasController extends Controller
         if($request){
             $user = User::find(Auth::id());
             $query = trim($request->get('search'));
-            if ($user->role->role == "admin") {
-                $citas = Cita::where('estado', 'LIKE', '%'.$query.'%')->orderBy('id', 'asc')->paginate(5);
-            } else {
-                $citas = Cita::where('user_id', '=', Auth::id())->where('estado', 'LIKE', '%'.$query.'%')->orderBy('id', 'asc')->paginate(5);
-            }
+            $citas = Cita::where('estado', 'LIKE', '%'.$query.'%')->orderBy('id', 'asc')->paginate(5);
             return view("intranet.citas", ["citas" => $citas]);
         }
     }
